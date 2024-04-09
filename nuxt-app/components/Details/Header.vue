@@ -5,7 +5,6 @@
         <img
           data-aos="zoom-in-right"
           class="rounded-[23px] h-[300px]"
-          4
           :src="popular?.photo?.toString()"
         />
         <div class="relative mt-7 md:mt-0">

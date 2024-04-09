@@ -15,7 +15,8 @@ import { storeToRefs } from "pinia";
 import { usePopularStore } from "~/stores/popular";
 const popularStore = usePopularStore();
 const { popular } = storeToRefs(popularStore);
-
+const abood = popular;
+console.log(abood);
 const route = useRoute();
 const { pending } = useLazyAsyncData(() => popularStore.getPopular("2"));
 </script>

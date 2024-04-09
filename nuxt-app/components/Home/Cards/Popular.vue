@@ -38,7 +38,6 @@ import { storeToRefs } from "pinia";
 const popularStore = usePopularStore();
 const { populars } = storeToRefs(popularStore);
 const { pending } = useLazyAsyncData(() => popularStore.list());
-// const getPopular = useLazyAsyncData(() => popularStore.getPopular("1"));
 
 const router = useRouter();
 </script>
