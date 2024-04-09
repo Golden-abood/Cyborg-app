@@ -1,18 +1,18 @@
 <template>
   <div class="relative top-0 left-[50%] translate-x-[-50%] rounded-[23px]">
     <div class="mx-auto mb-0 mt-[15px]">
-      <div class="md:flex justify-center w-full gap-x-8 items-center">
+      <div class="items-center justify-center w-full md:flex gap-x-8">
         <img
           data-aos="zoom-in-right"
           class="rounded-[23px] h-[300px]"
           4
-          :src="popular.photo"
+          :src="popular?.photo?.toString()"
         />
         <div class="relative mt-7 md:mt-0">
           <img
             class="rounded-[23px] h-[300px]"
             data-aos="zoom-in-left"
-            :src="popular.video"
+            :src="popular?.video?.toString()"
           />
           <Icon
             name="material-symbols:play-arrow-rounded"
@@ -27,21 +27,14 @@
         data-aos="zoom-in-down"
         class="text-center mt-[60px] mb-[40px] text-white text-[45px] font-bold"
       >
-        {{ popular.title.toUpperCase() }} DETAILS
+        {{ popular?.title.toUpperCase()?.toString() }} DETAILS
       </h2>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { usePopularStore } from "~/stores/popular";
-const popularStore = usePopularStore();
-const { popular } = storeToRefs(popularStore);
-const route = useRoute();
-const { pending } = useLazyAsyncData(() =>
-  popularStore.getPopular(route.params.id)
-);
+defineProps(["popular"]);
 </script>
 
 <style scoped></style>

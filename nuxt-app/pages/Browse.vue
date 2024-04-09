@@ -1,7 +1,7 @@
 <template>
   <div>
     <BaseContainer class="mt-[120px] md:mt-0">
-      <div class="xl:flex justify-between gap-x-10">
+      <div class="justify-between xl:flex gap-x-10">
         <BaseWrapper class="w-full xl:w-[65%] !mt-[10px]">
           <BaseTheTitle title="Featured " text="Games" />
           <FeaturedGames />

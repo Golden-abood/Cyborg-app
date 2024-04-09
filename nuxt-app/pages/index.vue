@@ -3,16 +3,16 @@
     <BaseContainer class="mt-[100px] md:mt-0">
       <HomeHeroSection />
       <BaseWrapper class="relative">
-        <div class="flex justify-between items-center">
+        <div class="flex items-center justify-between">
           <BaseTheTitle title="Most Popular" text="Right Now" />
           <BaseTheButton
             data-aos="zoom-in-left"
             title="Add Popular"
-            class="rounded-md mb-9 mx-auto md:mx-0"
+            class="mx-auto rounded-md mb-9 md:mx-0"
             @click="dialog = true"
           />
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 pb-6">
+        <div class="grid grid-cols-1 gap-8 pb-6 md:grid-cols-2 xl:grid-cols-4">
           <HomeCardsPopular data-aos="fade-down" />
           <Dialog v-if="dialog" @close-dialog="closeDialog()" />
         </div>

@@ -3,16 +3,19 @@
     v-for="(popular, index) in populars"
     class="bg-lightDark rounded-[23px] px-[15px] py-[30px] cursor-pointer relative"
     data-aos="zoom-in-down"
-    @click="router.push(`/${popular.id}`)"
+    @click="router.push(`/populars/${popular.id}`)"
   >
-    <img :src="popular.src" class="rounded-[23px] mx-auto w-[100%]" />
+    <img
+      :src="popular.src.toString()"
+      class="rounded-[23px] mx-auto w-[100%]"
+    />
     <div class="flex justify-between pt-5">
       <div>
         <h4 class="text-white font-[700]">{{ popular.title }}</h4>
         <p class="text-light text-[15px] mt-1">{{ popular.type }}</p>
       </div>
       <div>
-        <div class="flex gap-x-1 items-center text-white">
+        <div class="flex items-center text-white gap-x-1">
           <Icon
             name="material-symbols:star-rounded"
             size="20px"
@@ -20,7 +23,7 @@
           />
           <span>{{ popular.count }}</span>
         </div>
-        <div class="flex gap-x-1 text-white">
+        <div class="flex text-white gap-x-1">
           <Icon name="ph:download-simple-fill" size="20px" color="#ec6090" />
           <span>{{ popular.follows }}</span>
         </div>
@@ -35,11 +38,9 @@ import { storeToRefs } from "pinia";
 const popularStore = usePopularStore();
 const { populars } = storeToRefs(popularStore);
 const { pending } = useLazyAsyncData(() => popularStore.list());
-const getPopular = useLazyAsyncData(() => popularStore.getPopular(1));
+// const getPopular = useLazyAsyncData(() => popularStore.getPopular("1"));
 
 const router = useRouter();
-const route = useRoute();
-console.log(route.redirectedFrom);
 </script>
 
 <style scoped></style>

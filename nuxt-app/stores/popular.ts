@@ -19,17 +19,17 @@ export const usePopularStore = defineStore("popular", () => {
   const type = ref<string>("");
 
   const list = async () => {
-    const res = await fetch("http://localhost:3000/populars");
+    const res = await fetch("http://localhost:3001/populars");
     const data = await res.json();
     populars.value = data;
   };
-  const getPopular = async (id: number) => {
-    const res = await fetch(`http://localhost:3000/populars/${id}`);
+  const getPopular = async (id: string | string[]) => {
+    const res = await fetch(`http://localhost:3001/populars/${id}`);
     const data = await res.json();
     popular.value = data;
   };
   const CreatePopular = async () => {
-    const res = await fetch("http://localhost:3000/populars", {
+    const res = await fetch("http://localhost:3001/populars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,11 +45,10 @@ export const usePopularStore = defineStore("popular", () => {
   };
 
   const deletePopular = async (id: number) => {
-    const res = await fetch(`http://localhost:3000/populars/${id}`, {
+    const res = await fetch(`http://localhost:3001/populars/${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
-    console.log(data);
   };
   return {
     populars,
