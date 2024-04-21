@@ -8,7 +8,7 @@
         <BaseTheTitle title="Your Gaming " text="Library" />
 
         <HomeCardsLibrary
-          v-for="library in libraries"
+          v-for="library in data?.libraries"
           :element="library"
           data-aos="zoom-in-down"
         />
@@ -18,10 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLibraryStore } from "~/stores/Library";
-import { storeToRefs } from "pinia";
-const libraryStore = useLibraryStore();
-const { libraries } = storeToRefs(libraryStore);
+const { data } = await useFetch("/api/libraries");
 </script>
 
 <style scoped></style>

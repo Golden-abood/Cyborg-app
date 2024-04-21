@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     "nuxt-aos",
   ],
 
-  css: ["~/assets/styles/main.css"],
+  css: ["/assets/styles/main.css"],
   postcss: {
     plugins: {
       tailwindcss: {},

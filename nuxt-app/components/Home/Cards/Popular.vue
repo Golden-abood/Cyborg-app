@@ -1,6 +1,6 @@
 <template>
   <div
-    v-for="(popular, index) in populars"
+    v-for="(popular, index) in data?.populars"
     class="bg-lightDark rounded-[23px] px-[15px] py-[30px] cursor-pointer relative"
     data-aos="zoom-in-down"
     @click="router.push(`/populars/${popular.id}`)"
@@ -33,12 +33,13 @@
 </template>
 
 <script setup lang="ts">
-import { usePopularStore } from "~/stores/popular";
-import { storeToRefs } from "pinia";
-const popularStore = usePopularStore();
-const { populars } = storeToRefs(popularStore);
-const { pending } = useLazyAsyncData(() => popularStore.list());
+// import { usePopularStore } from "~/stores/popular";
+// import { storeToRefs } from "pinia";
+// const popularStore = usePopularStore();
+// const { populars } = storeToRefs(popularStore);
+// const { pending } = useLazyAsyncData(() => popularStore.list());
 
+const { data } = await useFetch("/api/populars");
 const router = useRouter();
 </script>
 

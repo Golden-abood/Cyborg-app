@@ -41,15 +41,15 @@ export const usePopularStore = defineStore("popular", () => {
     });
 
     const data = await res.json();
-    await list();
+    // await list();
   };
 
-  const deletePopular = async (id: number) => {
-    const res = await fetch(`http://localhost:3001/populars/${id}`, {
-      method: "DELETE",
-    });
-    const data = await res.json();
-  };
+  // const deletePopular = async (id: number) => {
+  //   const res = await fetch(`http://localhost:3001/populars/${id}`, {
+  //     method: "DELETE",
+  //   });
+  //   const data = await res.json();
+  // };
   return {
     populars,
     popular,
@@ -58,6 +58,6 @@ export const usePopularStore = defineStore("popular", () => {
     list,
     getPopular,
     CreatePopular,
-    deletePopular,
+    // deletePopular,
   };
 });

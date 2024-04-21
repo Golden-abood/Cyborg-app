@@ -10,13 +10,13 @@ export const useStreamStore = defineStore("stream", () => {
   const streams = ref<stream[]>([]);
   const stream = ref<stream>();
   const list = async () => {
-    const res = await fetch("http://localhost:3000/streams");
+    const res = await fetch("http://localhost:3001/streams");
     const data = await res.json();
     streams.value = data;
   };
 
   const createStream = async () => {
-    const res = await fetch("http://localhost:3000/streams", {
+    const res = await fetch("http://localhost:3001/streams", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const useStreamStore = defineStore("stream", () => {
   };
 
   const updateStream = async (id: number) => {
-    const res = await fetch("http://localhost:3000/streams/" + id, {
+    const res = await fetch("http://localhost:3001/streams/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const useStreamStore = defineStore("stream", () => {
   };
 
   const deleteStream = async (id: number) => {
-    const res = await fetch(`http://localhost:3000/streams/${id}`, {
+    const res = await fetch(`http://localhost:3001/streams/${id}`, {
       method: "DELETE",
     });
     const data = await res.json();

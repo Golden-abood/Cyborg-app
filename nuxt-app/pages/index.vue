@@ -9,8 +9,8 @@
             data-aos="zoom-in-left"
             title="Add Popular"
             class="mx-auto rounded-md mb-9 md:mx-0"
-            @click="dialog = true"
           />
+          <!-- @click="dialog = true" -->
         </div>
         <div class="grid grid-cols-1 gap-8 pb-6 md:grid-cols-2 xl:grid-cols-4">
           <HomeCardsPopular data-aos="fade-down" />
@@ -26,7 +26,7 @@
         <div>
           <HomeCardsLibrary
             data-aos="fade-down"
-            v-for="library in libraries"
+            v-for="library in data?.libraries"
             :element="library"
           />
         </div>
@@ -36,10 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLibraryStore } from "~/stores/Library";
-import { storeToRefs } from "pinia";
-const libraryStore = useLibraryStore();
-const { libraries } = storeToRefs(libraryStore);
+const { data } = await useFetch("/api/libraries");
 const dialog = ref(false);
 
 const closeDialog = () => {

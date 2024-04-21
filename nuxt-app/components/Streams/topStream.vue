@@ -4,11 +4,11 @@
       <div
         class="flex justify-between items-center py-[20px] px-0 border-b-[1px] border-solid border-dark"
         v-for="item in topStreams"
-        :key="item.num"
+        :key="item?.num"
         data-aos="zoom-in-down"
       >
-        <div class="flex justify-around items-center">
-          <span class="text-white mr-[8px] font-bold">{{ item.num }}</span>
+        <div class="flex items-center justify-around">
+          <span class="text-white mr-[8px] font-bold">{{ item?.num }}</span>
           <img class="rounded-full mr-[12px]" :src="item.src" />
           <Icon
             size="25"
@@ -16,7 +16,7 @@
             class="mr-3"
             color="#e75e8d"
           ></Icon>
-          <p class="text-primary text-sm">{{ item.title }}</p>
+          <p class="text-sm text-primary">{{ item?.title }}</p>
         </div>
         <BaseTheButton class="ml-[10px] !px-0 w-[80px]" title="follow" />
       </div>

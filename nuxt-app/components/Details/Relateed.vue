@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-[25px]">
     <div
       class="border-b-[1px] border-b-solid border-b-lightDark pb-5 flex relative items-center justify-between"
-      v-for="card in populars"
+      v-for="card in otherPopulars"
       :key="card.title"
       data-aos="zoom-in-down"
     >
@@ -31,14 +31,12 @@
   </div>
 </template>
 
-<script setup>
-import { storeToRefs } from "pinia";
-import { usePopularStore } from "~/stores/popular";
-const popularStore = usePopularStore();
-const { populars } = storeToRefs(popularStore);
-const { pending } = useLazyAsyncData(() => {
-  popularStore.list();
-});
+<script setup lang="ts">
+const { data } = await useFetch("/api/populars");
+const route = useRoute();
+const otherPopulars = data.value.populars.filter(
+  (el) => el.id != route.params.id
+);
 </script>
 
 <style scoped></style>

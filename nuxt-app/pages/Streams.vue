@@ -1,6 +1,6 @@
 <template>
   <BaseContainer class="mt-[120px] md:mt-0">
-    <div class="xl:flex justify-between gap-x-10">
+    <div class="justify-between xl:flex gap-x-10">
       <BaseWrapper class="w-full xl:w-[65%] !mt-[10px]">
         <BaseTheTitle title="Featured " text="Games" />
         <FeaturedGames />
@@ -11,14 +11,14 @@
       </BaseWrapper>
     </div>
     <BaseWrapper class="mt-16">
-      <div class="flex justify-between items-center">
+      <div class="flex items-center justify-between">
         <BaseTheTitle title="Most Popular" text="Live Stream" />
         <BaseTheButton
           data-aos="zoom-in-left"
           title="Add Stream"
-          class="rounded-md mb-9 mx-auto md:mx-0"
-          @click="dialog = true"
+          class="mx-auto rounded-md mb-9 md:mx-0"
         />
+        <!-- @click="dialog = true" -->
       </div>
       <StreamsMostPopular />
       <Dialog v-if="dialog" @close-dialog="closeDialog()" />
