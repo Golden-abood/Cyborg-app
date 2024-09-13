@@ -8,7 +8,7 @@
           <BaseTheButton
             data-aos="zoom-in-left"
             title="Add Popular"
-            class="mx-auto rounded-md mb-9 md:mx-0"
+            class="hidden mx-auto text-base rounded-md mb-9 md:mx-0 md:flex"
           />
           <!-- @click="dialog = true" -->
         </div>

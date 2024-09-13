@@ -1,8 +1,10 @@
 <template>
   <div
-    class="fixed md:relative pt-8 bg-white md:bg-dark py-[35px] flex justify-between items-center ml-0 w-[100%] lg:w-[90%] lg:ml-[90px] mr-[90px] px-[30px] sm:mt-0 rounded-0 lg:rounded-12 z-[10000]"
+    class="fixed md:relative bg-white md:bg-dark py-8 flex justify-between items-center ml-0 w-[100%] lg:w-[90%] lg:ml-[90px] mr-[90px] px-[30px] sm:mt-0 rounded-0 lg:rounded-12 z-[10000]"
   >
-    <img src="/images/logo.png" />
+    <nuxt-link to="/">
+      <img src="/images/logo.png" class="w-[70%] md:w-full" />
+    </nuxt-link>
 
     <div>
       <input
@@ -13,8 +15,8 @@
     </div>
     <div
       @click="showNav()"
-      :class="{ abood: show }"
-      class="burger-icon relative w-[4%] right-[30px] top-[-10px] mt-[15px] lg:hidden"
+      :class="{ header: show }"
+      class="burger-icon relative w-[4%] right-[30px] lg:hidden"
     >
       <span class="bg-primary"></span>
       <span class="bg-primary"></span>
@@ -26,36 +28,16 @@
         class="hidden lg:flex items-center justify-center gap-x-[0px]"
       >
         <li
-          class="mr-0 md:mr-5 text-[15px] cursor-pointer w-[60px] transition duration-100 text-center flex-nowrap text-base min-w-[14%] rounded-5 py-2 text-primary"
-        >
-          <nuxt-link to="/" class="nuxt-link-active text-light">Home</nuxt-link>
-        </li>
-        <li
-          class="mr-0 md:mr-5 text-[15px] cursor-pointer text-center flex-nowrap text-base w-[70px] transition duration-100 hover:rounded-5 min-w-[14%] hover:py-2"
-        >
-          <nuxt-link class="!text-light hover:!text-primary" to="Browse"
-            >Browse</nuxt-link
-          >
-        </li>
-        <li
-          class="mr-0 md:mr-5 text-[15px] cursor-pointer w-[60px] transition duration-100 text-center flex-nowrap text-base hover:rounded-5 min-w-[14%] hover:py-2"
-        >
-          <nuxt-link class="!text-light hover:!text-primary" to="Streams"
-            >Streams</nuxt-link
-          >
-        </li>
-        <li
-          class="group flex justify-evenly rounded-[50px] md:bg-lightDark md:hover:bg-primary items-center mr-0 md:mr-5 text-[15px] cursor-pointer w-[110px] transition duration-100 text-center flex-nowrap text-base min-w-[20%] py-1"
+          v-for="(link, i) in links"
+          :key="i"
+          class="mr-0 md:mr-5 text-[15px] cursor-pointer w-[60px] text-center flex-nowrap text-base min-w-[14%] rounded-5 py-2"
+          @click="showNav()"
         >
           <nuxt-link
-            class="!text-light group-hover:!text-primary md:group-hover:!text-white"
-            to="Profile"
-            >Profile</nuxt-link
+            :to="i == 0 ? `/` : `/${link.toLowerCase()}`"
+            class="hover:!text-primary !text-light"
+            >{{ link }}</nuxt-link
           >
-          <img
-            src="/images/profile-header.jpg"
-            class="rounded-full object-fill w-8 hidden md:block"
-          />
         </li>
       </ul>
     </client-only>
@@ -65,6 +47,8 @@
 <script setup lang="ts">
 // To do : add transition in nav on mobile
 const show = ref(false);
+
+const links = ["Home", "Browse", "Streams", "Profile"];
 
 const showNav = function () {
   show.value = !show.value;
@@ -88,13 +72,13 @@ onUnmounted(() => {
 
 <style scoped>
 @media (min-width: 992px) {
-  .nuxt-link-active {
-    color: #ec6090;
+  .router-link-active.router-link-exact-active {
+    color: #ec6090 !important;
   }
 }
 @media (max-width: 991px) {
-  .nuxt-link-active {
-    color: #ec6090;
+  .router-link-active.router-link-exact-active {
+    color: #ec6090 !important;
   }
 }
 @media (max-width: 1024px) {
@@ -105,7 +89,7 @@ onUnmounted(() => {
     right: 50px;
     top: 35px;
   }
-  .abood + ul {
+  .header + ul {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -121,7 +105,7 @@ onUnmounted(() => {
     position: fixed;
     margin-top: 0;
   }
-  .abood + ul li {
+  .header + ul li {
     width: 100%;
     padding: 20px 0;
     border-bottom: 1px solid #eee;

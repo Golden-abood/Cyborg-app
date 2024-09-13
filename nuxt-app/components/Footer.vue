@@ -7,8 +7,8 @@
       <p>
         Copyright © 2036 <span>Cyborg Gaming</span> Company. All rights
         reserved. <br />
-        Design:
-        <span class="hover:text-primary cursor-pointer">TemplateMo</span>
+        Developed by
+        <span class="cursor-pointer hover:text-primary">Golden developer</span>
       </p>
     </div>
   </div>
