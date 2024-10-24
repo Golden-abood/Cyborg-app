@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Popular } from "~/types";
 // import { usePopularStore } from "~/stores/popular";
 // import { storeToRefs } from "pinia";
 // const popularStore = usePopularStore();

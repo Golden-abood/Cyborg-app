@@ -32,10 +32,13 @@
 </template>
 
 <script setup lang="ts">
+import type { Popular } from "~/types";
+
 const { data } = await useFetch("/api/populars");
 const route = useRoute();
-const otherPopulars = data.value.populars.filter(
-  (el) => el.id != route.params.id
+const id = route.params.id[0];
+const otherPopulars = data.value?.populars.filter(
+  (el: Popular) => el.id != parseInt(id)
 );
 </script>
 

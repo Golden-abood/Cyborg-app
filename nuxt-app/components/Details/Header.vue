@@ -33,7 +33,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps(["popular"]);
+import type { PropType } from "vue";
+import type { Popular } from "~/types";
+
+ 
 </script>
 
 <style scoped></style>

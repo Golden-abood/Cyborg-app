@@ -1,5 +1,7 @@
+import { Popular } from "~/types";
+
 export default defineEventHandler(async (event) => {
-  const populars = [
+  const populars: Popular[] = [
     {
       id: 1,
       title: "Fortnite",

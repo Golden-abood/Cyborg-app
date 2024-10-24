@@ -1,20 +1,9 @@
 import { defineStore } from "pinia";
-interface popular {
-  id: number;
-  title: String;
-  type: String;
-  src: String;
-  count: String;
-  follows: String;
-  action: String;
-  size: String;
-  photo: String;
-  video: String;
-  screenshots: [];
-}
+import { type Popular } from "~/types";
+
 export const usePopularStore = defineStore("popular", () => {
-  const populars = ref<popular[]>([]);
-  const popular = ref<popular>();
+  const populars = ref<Popular[]>([]);
+  const popular = ref<Popular>();
   const title = ref<string>("");
   const type = ref<string>("");
 

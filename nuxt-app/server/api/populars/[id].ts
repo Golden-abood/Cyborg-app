@@ -1,4 +1,6 @@
-const populars = [
+import { Popular } from "~/types";
+
+const populars: Popular[] = [
   {
     id: 1,
     title: "Fortnite",
@@ -138,7 +140,7 @@ const populars = [
 ];
 
 export default defineEventHandler(async (event) => {
-  const popular = populars.find((el) => {
+  const popular = populars.find((el: Popular) => {
     return el.id === parseInt(event.context.params.id);
   });
   return {
